@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+*:focus {
+  outline: unset;
+}
+html {
+  box-sizing: border-box;
+    font-size: 62.5%;
+}
+  body{
+    font-size: 1.6rem;
+    // line-height: 1.65;
+    font-family: 'DM Sans', sans-serif !important;
+  }

@@ -1,0 +1,136 @@
+<div class="body">
+    <div class="">
+        <div class="table">
+            <div class="table__header">
+              <div class="table__data u-pl-52">Description</div>
+              <div class="table__data">Price</div>
+            </div>
+            <div class="table__body" [formGroup]="feesForm">
+              <div
+                class=""
+                formArrayName="payType"
+                *ngFor="let item of payType.controls; let i = index"
+              >
+                <div [formGroupName]="i" class="table__row">
+                  <div class="table__data">
+                    <div class="file__download-btn">
+                      {{ i + 1 }}
+                    </div>
+                    <div class="form-group">
+                      <input
+                        class="form-control"
+                        formControlName="type"
+                        placeholder="Motion Fees"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <div class="table__data table__data--2">
+                    <div class="form-group">
+                      <div class="input__appendContainer">
+                        <input
+                          class="form-control u-pl-52 "
+                          formControlName="price"
+                          id="exampleInputPassword1"
+                          placeholder="price"
+                          type="number"
+                        />
+                        <span class="input__prepend">
+                          <svg
+                            fill="none"
+                            height="12"
+                            viewBox="0 0 13 12"
+                            width="13"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M10.6797 4.65625H12.4219V5.84375H10.6797V7H12.4219V8.1875H10.6797V12H9.16406L6.67188 8.1875H3.4375V12H1.9375V8.1875H0.242188V7H1.9375V5.84375H0.242188V4.65625H1.9375V0.625H3.4375L6.07031 4.65625H9.1875V0.625H10.6797V4.65625ZM3.4375 7H5.89844L5.14062 5.84375H3.4375V7ZM7.59375 7H9.1875V5.84375H6.84375L7.59375 7ZM3.4375 4.65625H4.36719L3.4375 3.23438V4.65625ZM9.1875 9.42969V8.1875H8.375L9.1875 9.42969Z"
+                              fill="#D5D5D5"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                    <span class="item-icon" (click)="deletePayTypeItem(i)">
+                      <svg
+                        fill="none"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <g opacity="0.5">
+                          <path
+                            clip-rule="evenodd"
+                            d="M18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289Z"
+                            fill="#959595"
+                            fill-rule="evenodd"
+                          />
+                          <path
+                            clip-rule="evenodd"
+                            d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z"
+                            fill="#959595"
+                            fill-rule="evenodd"
+                          />
+                        </g>
+                      </svg>
+                    </span>
+                  </div>
+                  <em
+                    [class.hidden]="
+                      !(item.get('type').invalid && item.get('type').dirty)
+                    "
+                    class="help-block text-error u-pl-52"
+                  >
+                    Description is Required
+                  </em>
+                  <em
+                    [class.hidden]="
+                      !(item.get('price').invalid && item.get('price').dirty)
+                    "
+                    class="help-block text-error"
+                  >
+                    Price is Required
+                  </em>
+                </div>
+              </div>
+            </div>
+            <div class="table__footer">
+              <div
+                class="table__data"
+                (click)="addPayTypeItem()"
+                style="cursor: pointer;"
+              >
+                <span class="item__icon">
+                  <svg
+                    fill="none"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle cx="12" cy="12" r="11.5" stroke="#C5C5C5" />
+                    <path
+                      clip-rule="evenodd"
+                      d="M16.6673 12.667H12.6673V16.667H11.334V12.667H7.33398V11.3337H11.334V7.33366H12.6673V11.3337H16.6673V12.667Z"
+                      fill="#FF5500"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+                <span class="item__icon--text">Add another item</span>
+              </div>
+            </div>
+        </div>
+        <footer>
+            <button
+            class="btn__primary"
+            (click)="confirmPrices()"
+            type="button"
+            [disabled]="payType.invalid"
+          >
+            Confirm Prices
+          </button>
+        </footer>
+    </div>
+</div>

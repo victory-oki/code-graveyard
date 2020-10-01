@@ -1,0 +1,97 @@
+<div class="body">
+    <div class="u-container">
+      <header class="logo">
+        <img
+          src="assets/svg/primso-logo.svg"
+          alt="primso logo"
+          class="logo__img"
+        />
+      </header>
+      <div class="grid__container">
+        <div class="grid__col--full">
+          <h5 class="heading__5 login__heading">One more step to go!</h5>
+          <p class="login__sub-text">
+            Enter the verification code sent to <br />
+            your email below
+          </p>
+          <form action="#" class="form" [formGroup]="deviceAuthForm">
+            <div class="form__group--inline">
+              <div class="input__group" formArrayName="digits">
+                <input
+                  maxlength="1"
+                  (keyup)="onKeyUpEvent($event)"
+                  type="number"
+                  [formControlName]="0"
+                  class="form__input--otp"
+                  id="1"
+                />
+                <input
+                  maxlength="1"
+                  (keyup)="onKeyUpEvent($event)"
+                  type="number"
+                  [formControlName]="1"
+                  class="form__input--otp"
+                  id="2"
+                />
+                <input
+                  maxlength="1"
+                  (keyup)="onKeyUpEvent($event)"
+                  type="number"
+                  [formControlName]="2"
+                  class="form__input--otp"
+                  id="3"
+                />
+                <input
+                  maxlength="1"
+                  (keyup)="onKeyUpEvent($event)"
+                  type="number"
+                  [formControlName]="3"
+                  class="form__input--otp"
+                  id="4"
+                />
+                <input
+                  maxlength="1"
+                  (keyup)="onKeyUpEvent($event)"
+                  type="number"
+                  [formControlName]="4"
+                  class="form__input--otp"
+                  id="5"
+                />
+                <input
+                  maxlength="1"
+                  (keyup)="onKeyUpEvent($event)"
+                  type="number"
+                  [formControlName]="5"
+                  class="form__input--otp"
+                  id="6"
+                />
+              </div>
+              <button
+                class="btn__primary"
+                [disabled]="deviceAuthForm.invalid || isLoading"
+                [title]="
+                  deviceAuthForm.invalid
+                    ? 'pls input verification code'
+                    : 'verify'
+                "
+                (click)="authDevice(deviceAuthForm.value)"
+              >
+                <span> continue </span>
+                <div *ngIf="isLoading">
+                  <app-global-loader [diameter]="20"></app-global-loader>
+                </div>
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="grid__col--full">
+          <img
+            src="assets/svg/device-auth-img.svg"
+            alt="features image"
+            class="auth__img"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  
